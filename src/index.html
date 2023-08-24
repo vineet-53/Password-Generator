@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta id="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password generator</title>
     <link rel="stylesheet" href="style.css" />
     <script defer src="script.js"></script>
@@ -21,15 +21,14 @@
         <hr class="p-1 w-full" />
         <!-- password copy container -->
         <div class="w-full flex justify-between">
-          <span>as1232@32asl</span>
-          <span data-password-copy
+          <span id="password-generated-text">as1232@32asl</span>
+          <span id="password-copy"
             ><svg
               class="fill-white cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
               viewBox="0 0 448 512"
             >
-              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
               <path
                 d="M384 336H192c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16l140.1 0L400 115.9V320c0 8.8-7.2 16-16 16zM192 384H384c35.3 0 64-28.7 64-64V115.9c0-12.7-5.1-24.9-14.1-33.9L366.1 14.1c-9-9-21.2-14.1-33.9-14.1H192c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64zM64 128c-35.3 0-64 28.7-64 64V448c0 35.3 28.7 64 64 64H256c35.3 0 64-28.7 64-64V416H272v32c0 8.8-7.2 16-16 16H64c-8.8 0-16-7.2-16-16V192c0-8.8 7.2-16 16-16H96V128H64z"
               />
@@ -41,37 +40,33 @@
         <!-- password length display -->
         <div class="flex justify-between w-full">
           <span>Password Length</span>
-          <span data-password-length-text>0</span>
+          <span data-password-length-text>12</span>
         </div>
         <!-- radio -->
         <div>
-          <input type="range" name="" id="" value="0" data-password-length />
+          <input type="range" value="12" data-password-length />
         </div>
         <!-- password length definition -->
         <ul>
-          <li class="w-full">
-            <label for="" class="flex gap-1">
-              <input type="checkbox" name="" id="" />
-              <span class="pl-3">Include Uppercase Letter</span>
+          <li class="w-full flex gap-1">
+            <input type="checkbox" id="upppercase" />
+            <label for="upppercase" class="pl-3">
+              Include UpperCase Letter
             </label>
           </li>
-          <li class="w-full">
-            <label for="" class="flex gap-1">
-              <input type="checkbox" name="" id="" />
-              <span class="pl-3">Include LoweCase Letter</span>
+          <li class="w-full flex gap-1">
+            <input type="checkbox" id="lowercase" />
+            <label for="lowercase" class="pl-3">
+              Include LoweCase Letter
             </label>
           </li>
-          <li class="w-full">
-            <label for="" class="flex gap-1">
-              <input type="checkbox" name="" id="" />
-              <span class="pl-3">Include Symbol</span>
-            </label>
+          <li class="w-full flex gap-1">
+            <input type="checkbox" id="symbols" />
+            <label for="symbols" class="pl-3"> Include Symbols </label>
           </li>
-          <li class="w-full">
-            <label for="" class="flex gap-1">
-              <input type="checkbox" name="" id="" />
-              <span class="pl-3">Include Number</span>
-            </label>
+          <li class="w-full flex gap-1">
+            <input type="checkbox" id="numbers" />
+            <label for="numbers" class="pl-3"> Include Numbers </label>
           </li>
         </ul>
         <!-- password strength -->
