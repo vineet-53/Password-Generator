@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.strong{ 
+    background-color: green;
+    box-shadow: 0 0 8px 2px green;
+
+}
+.weak { 
+    background-color: red;
+    box-shadow: 0 0 8px 2px red;
+}
