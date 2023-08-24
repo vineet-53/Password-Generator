@@ -1,98 +1,34 @@
-const passwordStrengthElem = document.querySelector(
+const strenghtColorDisplay = document.querySelector(
   "span[data-password-strength]"
 );
-const passwordLengthElem = document.querySelector(
-  "input[data-password-length]"
-);
-const passwordLengthText = document.querySelector(
-  "span[data-password-length-text]"
-);
+const inputSlider = document.querySelector("input[data-password-length]");
+const lengthDisplay = document.querySelector("span[data-password-length-text]");
 const generatePassword = document.querySelector(
   "button[data-password-generate]"
 );
 const checkBoxNodes = document.querySelectorAll("input[type=checkbox]");
 const checkBoxes = Array.from(checkBoxNodes);
-const passwordStrengthTextElem = document.querySelector(
+const strenghtText = document.querySelector(
   "span[data-password-strength-text]"
 );
-const passwordGeneratedText = document.getElementById(
-  "password-generated-text"
-);
-const passwordCopyElem = document.getElementById("password-copy");
+const passwordGenerated = document.getElementById("password-generated-text");
+const copyPassword = document.getElementById("password-copy");
 let passwordLength = 12;
-let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-let alphabets_lg = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-
-let alphabets_sm = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-let characters = ["!", "@", "#", "$", "%", "^", "&", "*"];
+let password = "";
 let checkedBoxesList;
 // update ui after any changes
 function updateUi(checkedBoxesList = []) {
-  passwordLengthText.textContent = passwordLength;
+  lengthDisplay.textContent = passwordLength;
   if (checkedBoxesList.length > 2 && passwordLength > 10) {
     // update the color of strength to green
-    passwordStrengthElem.classList.add("strong");
-    passwordStrengthElem.classList.remove("weak");
-    passwordStrengthTextElem.textContent = "Strong";
+    strenghtColorDisplay.classList.add("strong");
+    strenghtColorDisplay.classList.remove("weak");
+    strenghtText.textContent = "Strong";
   } else {
     // update the color or strength red
-    passwordStrengthElem.classList.remove("strong");
-    passwordStrengthElem.classList.add("weak");
-    passwordStrengthTextElem.textContent = "Weak";
+    strenghtColorDisplay.classList.remove("strong");
+    strenghtColorDisplay.classList.add("weak");
+    strenghtText.textContent = "Weak";
   }
 }
 // setting password if length is changing
@@ -110,16 +46,14 @@ function fetchPasswordArr() {}
 // handle generate
 function handleGeneratePassword() {}
 function copyPasswordToClipboard() {
-  console.log("copy text");
-  let passwordText = passwordGeneratedText.innerHTML;
-  navigator.clipboard.writeText(passwordText);
+  navigator.clipboard.writeText(passwordGenerated.innerHTML);
 }
 checkBoxes.forEach((checkBox) => {
   checkBox.addEventListener("click", () => {
     checkPasswordStrength();
   });
 });
-passwordLengthElem.addEventListener("change", (event) => {
+inputSlider.addEventListener("change", (event) => {
   setPasswordLength(event);
   updateUi();
   checkPasswordStrength();
@@ -129,6 +63,6 @@ generatePassword.addEventListener("click", (e) => {
   checkPasswordStrength();
   handleGeneratePassword();
 });
-passwordCopyElem.addEventListener("click", () => {
+copyPassword.addEventListener("click", () => {
   copyPasswordToClipboard();
 });
