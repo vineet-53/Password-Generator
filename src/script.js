@@ -6,63 +6,89 @@ const lengthDisplay = document.querySelector("span[data-password-length-text]");
 const generatePassword = document.querySelector(
   "button[data-password-generate]"
 );
-const checkBoxNodes = document.querySelectorAll("input[type=checkbox]");
-const checkBoxes = Array.from(checkBoxNodes);
+const checkBoxes = Array.from(document.querySelectorAll("input[type=checkbox]"));
 const strenghtText = document.querySelector(
   "span[data-password-strength-text]"
 );
-const passwordGenerated = document.getElementById("password-generated-text");
-const copyPassword = document.getElementById("password-copy");
+const copiedDiv = document.querySelector('div[data-copied-text]')
+const passwordDisplay = document.getElementById("generated-passwd");
+const copyPassword = document.getElementById("copy-passwd");
 let passwordLength = 12;
 let password = "";
 let checkedBoxesList;
-// update ui after any changes
-function updateUi(checkedBoxesList = []) {
-  lengthDisplay.textContent = passwordLength;
-  if (checkedBoxesList.length > 2 && passwordLength > 10) {
-    // update the color of strength to green
-    strenghtColorDisplay.classList.add("strong");
-    strenghtColorDisplay.classList.remove("weak");
-    strenghtText.textContent = "Strong";
-  } else {
-    // update the color or strength red
-    strenghtColorDisplay.classList.remove("strong");
-    strenghtColorDisplay.classList.add("weak");
-    strenghtText.textContent = "Weak";
+let symbols = ["!", "@", "#", "$", "%", "^", "&", "*"];
+handleSlider();
+// update the slider value and display 
+function handleSlider() { 
+  passwordLength = Math.floor(inputSlider.value / 2);
+  lengthDisplay.innerText = passwordLength;
+}
+function setColor(color , text =""){ 
+  strenghtColorDisplay.style.backgroundColor = color;
+  // shadow
+  strenghtText.innerHTML  = text;
+  strenghtColorDisplay.style.boxShadow = `0  0 30px 1px ${color}`
+}
+async function copyPasswordToClipboard(){ 
+  try  { 
+    await navigator.clipboard.writeText(passwordDisplay.value);
+    copiedDiv.innerText = "copied"
+  }
+  catch(e) { 
+    copiedDiv.innerText = "Error"
+  }
+  copiedDiv.style.opacity = 1;
+  setTimeout(()=> { 
+    copiedDiv.style.opacity = 0;
+  } , 1000);
+}
+function checkInputBoxes() { 
+  return checkBoxes.filter(checkBox => checkBox.checked == true);
+}
+function checkPasswordStrength () { 
+  checkedBoxesList =  checkInputBoxes();
+  if(passwordLength > 15 && checkedBoxesList.length >=2 ){ 
+    setColor('#24f324' , "strong");
+  }
+  else{ 
+    setColor("red" , "weak");
   }
 }
-// setting password if length is changing
-function setPasswordLength(event) {
-  passwordLength = Math.floor(event.target.value / 4);
+// get random number
+function getRandNum(min , max) { 
+  return Math.floor(Math.random() * (max - min) + min)
 }
-// checking the password strenght
-function checkPasswordStrength() {
-  checkedBoxesList = checkBoxes.filter((input) => {
-    if (input.checked) return input;
-  });
-  updateUi(checkedBoxesList);
+// get number from 0 to 9 
+function getNumber() { 
+  return  getRandNum( 0  , 9);
 }
-function fetchPasswordArr() {}
-// handle generate
-function handleGeneratePassword() {}
-function copyPasswordToClipboard() {
-  navigator.clipboard.writeText(passwordGenerated.innerHTML);
+// uppercase
+function getUpperCase() { 
+  return String.fromCharCode(getRandNum(65 , 90));
 }
-checkBoxes.forEach((checkBox) => {
-  checkBox.addEventListener("click", () => {
-    checkPasswordStrength();
-  });
-});
-inputSlider.addEventListener("change", (event) => {
-  setPasswordLength(event);
-  updateUi();
-  checkPasswordStrength();
-});
 
-generatePassword.addEventListener("click", (e) => {
-  checkPasswordStrength();
+//lowercase
+function getLowerCase() { 
+  return String.fromCharCode(getRandNum(97 , 122))
+}
+// special char
+function getSpecial(){ 
+  return symbols[getRandNum(0  , symbols.length)]; 
+}
+function handleGeneratePassword() { }
+generatePassword.addEventListener('click' , ()=> { 
   handleGeneratePassword();
-});
-copyPassword.addEventListener("click", () => {
+})
+checkBoxes.forEach(checkBox => {
+  checkBox.addEventListener('click' , ()=> {
+    checkPasswordStrength();
+  })
+})
+inputSlider.addEventListener('input' , ()=> { 
+  handleSlider();
+  checkPasswordStrength();
+})
+copyPassword.addEventListener('click' , ()=> { 
+  console.log('copied password');
   copyPasswordToClipboard();
-});
+})
