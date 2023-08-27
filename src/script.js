@@ -22,7 +22,7 @@ let symbols = ["!", "@", "#", "$", "%", "^", "&", "*"];
 handleSlider();
 // update the slider value and display
 function updateUi() {
-  lengthDisplay.innerText = passwordLength;
+  lengthDisplay.innerHTML = passwordLength;
   passwordDisplay.value = password;
 }
 function handleSlider() {
@@ -38,9 +38,9 @@ function setColor(color, text = "") {
 async function copyPasswordToClipboard() {
   try {
     await navigator.clipboard.writeText(passwordDisplay.value);
-    copiedDiv.innerText = "copied";
+    copiedDiv.innerHTML = "copied";
   } catch (e) {
-    copiedDiv.innerText = "Error";
+    copiedDiv.innerHTML = "Error";
   }
   copiedDiv.style.opacity = 1;
   setTimeout(() => {

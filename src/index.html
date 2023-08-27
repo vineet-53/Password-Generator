@@ -21,9 +21,17 @@
         <hr class="p-1 w-full" />
         <!-- password copy container -->
         <div class="w-full flex justify-between items-center gap-2">
-          <input type="text" id="generated-password" value="" class="text-black px-2 py-1  rounded-md mr-2">
-          <span id="copy-passwd"
-            ><svg
+          <input
+            type="text"
+            id="generated-password"
+            value=""
+            class="text-black px-2 py-1 rounded-md mr-2"
+          />
+          <span id="copy-passwd" class="relative">
+            <div data-copied-text
+              class="flex justify-center items-center absolute w-[100px] opacity-0 h-[30px] bg-yellow-500 text-white px-2 py-1 rounded-lg translate-x-[-40%] translate-y-[-45px]"
+            ></div>
+            <svg
               class="fill-white cursor-pointer"
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
