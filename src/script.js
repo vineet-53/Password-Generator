@@ -82,27 +82,22 @@ function getSymbol() {
 function append(char) {
   password.concat(char);
 }
-function checkCheckBox(id){ 
-  let generatedChar ;
-  if(id == "numbers"){ 
-    generatedChar = getNumber();
-  }else if(id == "lowercase") { 
-    generatedChar = getLowerCase();
-  }else if(id == "uppercase"){ 
-    generatedChar= getUpperCase();
-  }else {
-    generatedChar = getSymbol();
-  } 
-  password += generatedChar;
+function checkCheckBox(checkBox) {
+  let id = checkBox.id;
+  if (id == "numbers") password += getNumber();
+  if (id == "lowercase") password += getLowerCase();
+  if (id == "uppercase") password += getUpperCase();
+  if (id == "symbols") password += getSymbol();
 }
 function handleGeneratePassword() {
-  password = ""
-  checkedBoxesList.map(checkBox => { 
-    checkCheckBox(checkBox.id);
-  })
+  password = "";
+  checkedBoxesList.forEach((checkBox) => {
+    checkCheckBox(checkBox);
+  });
   // remaining length
-  for(let i = 0 ; i < passwordLength - checkedBoxesList.length ; i++ ) {
-    let selectedInput = checkedBoxesList[getRandNum(0 , checkedBoxesList.length)];
+  for (let i = 0; i < passwordLength - checkedBoxesList.length; i++) {
+    let selectedInput =
+      checkedBoxesList[getRandNum(0, checkedBoxesList.length)];
     checkCheckBox(selectedInput);
   }
   updateUi();
