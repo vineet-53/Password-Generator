@@ -92,7 +92,8 @@ function checkCheckBox(checkBox) {
 function handleGeneratePassword() {
   password = "";
   checkedBoxesList.forEach((checkBox) => {
-    checkCheckBox(checkBox);
+    let randomIndex = getRandNum(0  ,checkedBoxesList.length);
+    checkCheckBox(checkedBoxesList[randomIndex]);
   });
   // remaining length
   for (let i = 0; i < passwordLength - checkedBoxesList.length; i++) {
