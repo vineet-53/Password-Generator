@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.strong {
+  background-color: green;
+  box-shadow: 0 0 8px 2px green;
+}
+.weak {
+  background-color: red;
+  box-shadow: 0 0 8px 2px red;
+}
+input[type="range"] {
+  appearance: none;
+  background-color: purple;
+  width: 100%;
+  border-radius: 999px;
+  height: 20px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  background-color: yellow;
+  border-radius: 9999px;
+  box-shadow: 0 0 10px 1px black;
+  height: 25px;
+  width: 25px;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: black;
+  border: 1px solid yellow;
+  box-shadow: 0 0 10px 1px yellow;
+  appearance: none;
+  border-radius: 9999px;
+}
+
+input[typte="range"]:focus {
+  outline: 0 0 10px 1px yellow;
+}
