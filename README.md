@@ -45,7 +45,4 @@ Throughout this project, I gained practical insights into connecting functions a
 ## Preview
 
 ![image](https://github.com/vineet-53/password-generator-js/assets/116667797/b37607a5-3663-4610-87db-e8a8937ea6fb)
-## Feedback
-
-If you have any feedback, please reach out at vineetsinghnegi53@gmail.com
 
