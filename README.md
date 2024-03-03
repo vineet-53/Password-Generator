@@ -9,7 +9,7 @@ Password Generator is a simple tool that helps you create strong and secure pass
 Run my-project with npm
 
 ```bash
-  git clone https://github.com/vineet-53/password-generator-js.git
+  git clone <github repo link>
   npm install my-project
   cd my-project
   npm install 
