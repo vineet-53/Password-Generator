@@ -4,9 +4,9 @@
 Password Generator is a simple tool that helps you create strong and secure passwords.
 
 
-## Installation
+## Running Locally
 
-Install my-project with npm
+Run my-project with npm
 
 ```bash
   git clone https://github.com/vineet-53/password-generator-js.git
