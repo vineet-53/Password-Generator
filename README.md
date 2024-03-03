@@ -16,7 +16,7 @@ Install my-project with npm
   npm run dev
 ```
     
-## Tech Stack Used
+## Tech Stack 
 - HTML 
 - CSS 
 - JavaScript
