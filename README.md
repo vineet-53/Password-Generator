@@ -9,9 +9,8 @@ Password Generator is a simple tool that helps you create strong and secure pass
 Run my-project with npm
 
 ```bash
-  git clone <github repo link>
-  npm install my-project
-  cd my-project
+  git clone https://github.com/vineet-53/Password-Generator.git
+  cd Password-Generator
   npm install 
   npm run dev
 ```
